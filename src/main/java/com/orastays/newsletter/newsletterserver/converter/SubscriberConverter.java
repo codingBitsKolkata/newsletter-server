@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import com.orastays.newsletter.newsletterserver.entity.SubscriberEntity;
+import com.orastays.newsletter.newsletterserver.helper.Status;
 import com.orastays.newsletter.newsletterserver.helper.Util;
 import com.orastays.newsletter.newsletterserver.model.SubscriberModel;
 
@@ -20,8 +21,22 @@ public class SubscriberConverter extends CommonConverter implements BaseConverte
 
 	@Override
 	public SubscriberEntity modelToEntity(SubscriberModel m) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (logger.isInfoEnabled()) {
+			logger.info("modelToEntity -- START");
+		}
+		
+		SubscriberEntity subscriberEntity = new SubscriberEntity();
+		subscriberEntity = (SubscriberEntity) Util.transform(modelMapper, m, subscriberEntity);
+		subscriberEntity.setStatus(Status.ACTIVE.ordinal());
+		subscriberEntity.setCreatedBy(Long.parseLong(m.getSubId()));
+		subscriberEntity.setCreatedDate(Util.getCurrentDateTime());
+		
+		if (logger.isInfoEnabled()) {
+			logger.info("modelToEntity -- END");
+		}
+		
+		return subscriberEntity;
 	}
 
 	@Override
