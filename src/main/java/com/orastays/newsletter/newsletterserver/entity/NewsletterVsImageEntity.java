@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,13 +29,16 @@ public class NewsletterVsImageEntity extends CommonEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "nli_id")
+	@JsonProperty("nliId")
 	private Long nliId;
 
 	@Column(name = "image_url")
+	@JsonProperty("imageUrl")
 	private String imageUrl;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "newsletter_id", nullable = false)
+	@JsonProperty("newsletter")
 	private NewsletterEntity newsletterEntity;
 
 	@Override

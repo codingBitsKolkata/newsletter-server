@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,24 +30,31 @@ public class NewsletterEntity extends CommonEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "newsletter_id")
+	@JsonProperty("newsletterId")
 	private Long newsletterId;
 
 	@Column(name = "title")
+	@JsonProperty("title")
 	private String title;
 
 	@Column(name = "description")
+	@JsonProperty("description")
 	private String description;
 
 	@Column(name = "language_id")
+	@JsonProperty("languageId")
 	private Long languageId;
 
 	@Column(name = "parent_id")
+	@JsonProperty("parentId")
 	private Long parentId;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "newsletterEntity", cascade = { CascadeType.ALL })
+	@JsonProperty("newsletterVsImages")
 	private List<NewsletterVsImageEntity> newsletterVsImageEntities;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "newsletterEntity", cascade = { CascadeType.ALL })
+	@JsonProperty("subscriberVsNewsletterLogs")
 	private List<SubscriberVsNewsletterLogEntity> subscriberVsNewsletterLogEntities;
 
 	@Override
