@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import com.orastays.newsletter.newsletterserver.exceptions.FormExceptions;
 import com.orastays.newsletter.newsletterserver.helper.Util;
 import com.orastays.newsletter.newsletterserver.model.SubscriberModel;
-import com.orastays.newsletter.newsletterserver.model.UserModel;
 
 @Component
 @Transactional
@@ -30,10 +29,9 @@ public class NewsletterValidation extends AuthorizeUserValidation {
 		}
 		
 		Map<String, Exception> exceptions = new LinkedHashMap<>();
-		UserModel userModel = getUserDetails(subscriberModel.getUserToken());
 		
-		if(Objects.nonNull(subscriberModel) && Objects.nonNull(userModel)) {
-			subscriberModel.setSubId(userModel.getUserId());
+		if(Objects.nonNull(subscriberModel)) {
+			
 			// Validate Name of the user
 			if(StringUtils.isBlank(subscriberModel.getName())) {
 				exceptions.put(messageUtil.getBundle("user.name.null.code"), new Exception(messageUtil.getBundle("user.name.null.message")));
@@ -86,6 +84,9 @@ public class NewsletterValidation extends AuthorizeUserValidation {
 				return false;
 			}
 		} catch (Exception e) {
+			if (logger.isInfoEnabled()) {
+				logger.info("Exception in checkSubscriber -- "+Util.errorToString(e));
+			}
 		}
 		
 		if (logger.isInfoEnabled()) {

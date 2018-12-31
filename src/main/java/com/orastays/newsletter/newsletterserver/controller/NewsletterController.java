@@ -69,6 +69,7 @@ private static final Logger logger = LogManager.getLogger(NewsletterController.c
 			if (logger.isInfoEnabled()) {
 				logger.info("Exception in Add Subscriber -- "+Util.errorToString(e));
 			}
+			e.printStackTrace();
 			responseModel.setResponseCode(messageUtil.getBundle(NewsletterConstant.COMMON_ERROR_CODE));
 			responseModel.setResponseMessage(messageUtil.getBundle(NewsletterConstant.COMMON_ERROR_MESSAGE));
 		}

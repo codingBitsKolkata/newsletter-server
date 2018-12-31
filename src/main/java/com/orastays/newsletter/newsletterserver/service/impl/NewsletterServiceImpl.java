@@ -26,7 +26,7 @@ public class NewsletterServiceImpl extends BaseServiceImpl implements Newsletter
 		
 		newsletterValidation.validateAddSubscriber(subscriberModel);
 		SubscriberEntity subscriberEntity = subscriberConverter.modelToEntity(subscriberModel);
-		Long userReviewId = (Long) subscriberDao.save(subscriberEntity);
+		subscriberDao.save(subscriberEntity);
 		
 		if (logger.isInfoEnabled()) {
 			logger.info("addSubscriber -- END");

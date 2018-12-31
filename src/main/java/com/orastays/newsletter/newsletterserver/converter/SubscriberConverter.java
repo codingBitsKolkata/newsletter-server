@@ -29,7 +29,7 @@ public class SubscriberConverter extends CommonConverter implements BaseConverte
 		SubscriberEntity subscriberEntity = new SubscriberEntity();
 		subscriberEntity = (SubscriberEntity) Util.transform(modelMapper, m, subscriberEntity);
 		subscriberEntity.setStatus(Status.ACTIVE.ordinal());
-		subscriberEntity.setCreatedBy(Long.parseLong(m.getSubId()));
+		subscriberEntity.setCreatedBy(Long.valueOf(Status.ZERO.ordinal()));
 		subscriberEntity.setCreatedDate(Util.getCurrentDateTime());
 		
 		if (logger.isInfoEnabled()) {
