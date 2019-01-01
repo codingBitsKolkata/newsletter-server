@@ -35,13 +35,11 @@ private static final Logger logger = LogManager.getLogger(NewsletterController.c
 	@ApiOperation(value = "Add Subscriber", response = ResponseModel.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 201, message = "Please Try after Sometime!!!"),
-			@ApiResponse(code = 202, message = "Token Required"),
-			@ApiResponse(code = 203, message = "Token Expires!!!Please login to continue..."),
-			@ApiResponse(code = 301, message = "Please Enter Name"),
-			@ApiResponse(code = 302, message = "Invalid Name"),
-			@ApiResponse(code = 308, message = "Please Enter Email ID"),
-			@ApiResponse(code = 309, message = "Invalid Email ID"),
-			@ApiResponse(code = 310, message = "Email ID Already Registered") })
+			@ApiResponse(code = 1100, message = "Please Enter Name"),
+			@ApiResponse(code = 1101, message = "Invalid Name"),
+			@ApiResponse(code = 1102, message = "Please Enter Email ID"),
+			@ApiResponse(code = 1103, message = "Invalid Email ID"),
+			@ApiResponse(code = 1104, message = "Email ID Already Registered") })
 	public ResponseEntity<ResponseModel> addSubscriber(@RequestBody SubscriberModel subscriberModel) {
 	
 		if (logger.isInfoEnabled()) {

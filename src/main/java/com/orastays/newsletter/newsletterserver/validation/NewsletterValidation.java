@@ -45,7 +45,7 @@ public class NewsletterValidation extends AuthorizeUserValidation {
 			if(StringUtils.isBlank(subscriberModel.getEmailId())) {
 				exceptions.put(messageUtil.getBundle("user.email.null.code"), new Exception(messageUtil.getBundle("user.email.null.message")));
 			} else {
-				if(!Util.checkEmail(subscriberModel.getEmailId())) {
+				if(!Util.emailValidator(subscriberModel.getEmailId())) {
 					exceptions.put(messageUtil.getBundle("user.email.invalid.code"), new Exception(messageUtil.getBundle("user.email.invalid.message")));
 				} else {
 					if(checkSubscriber(subscriberModel.getEmailId())) {
