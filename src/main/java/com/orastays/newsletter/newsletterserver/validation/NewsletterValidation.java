@@ -24,8 +24,8 @@ public class NewsletterValidation extends AuthorizeUserValidation {
 	//Validation while adding review
 	public void validateAddSubscriber(SubscriberModel subscriberModel) throws FormExceptions {
 		
-		if (logger.isDebugEnabled()) {
-			logger.debug("validateAddSubscriber -- Start");
+		if (logger.isInfoEnabled()) {
+			logger.info("validateAddSubscriber -- Start");
 		}
 		
 		Map<String, Exception> exceptions = new LinkedHashMap<>();
@@ -58,8 +58,8 @@ public class NewsletterValidation extends AuthorizeUserValidation {
 		if (exceptions.size() > 0)
 			throw new FormExceptions(exceptions);
 		
-		if (logger.isDebugEnabled()) {
-			logger.debug("validateAddSubscriber -- End");
+		if (logger.isInfoEnabled()) {
+			logger.info("validateAddSubscriber -- End");
 		}	
 	}
 	
