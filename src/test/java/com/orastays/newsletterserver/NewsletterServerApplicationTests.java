@@ -1,4 +1,4 @@
-package com.orastays.newsletter.newsletterserver;
+package com.orastays.newsletterserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
